@@ -26,17 +26,17 @@
             </div>
             <div class="col">
                 <h1>{{ title }}</h1>
-                <p>{{ data }}</p>
+                <p>{{ message }}</p>
             </div>
         </div>
 
     </div>    
     <script>
-        let app = new Vue({
+        let appVariable = new Vue({
             el : '#app',
             data : {
                 title : 'Hello from my first vue project.',
-                data : 'Hello everybody!'
+                message : 'Hello everybody!'
             }
         })
     </script>
