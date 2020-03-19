@@ -25,13 +25,23 @@
                 </fieldset>
             </div>
             <div class="col">
-                <h1>{{ title }}</h1>
-                <p>{{ message }}</p>
+                <output-message :title="title" :message="message"/>
+
             </div>
         </div>
 
     </div>    
     <script>
+
+        Vue.component('output-message',{
+            props : ['title','message'],
+            template : `<div>  
+            <h1>{{ title }}</h1>                
+            <p>{{ message }}</p>          
+            </div> `
+        });
+
+
         let appVariable = new Vue({
             el : '#app',
             data : {
