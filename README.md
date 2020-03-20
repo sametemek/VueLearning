@@ -46,3 +46,54 @@ v-model="index" ise hem veriyi bağlar, hem de değiştikçe verinin içini de d
 ```javascript
 <output-message :title="title" :message="message"/>
 ```
+
+## VueCli ile proje oluşturmak
+
+VueCli kullanabilmek için NodeJs kurulu olmalıdır.
+
+Aşağıdaki satırla kurulabilir.
+
+```
+choco install nodejs
+```
+
+Nodejs ile beraber npm de kurulmuş olacak. Npm yardımıyla VueCli kurulur.
+
+```
+npm install -g @vue/cli
+```
+VueCli kurulduktan sonra aşağıdaki komutla vue projesini oluşturuyoruz.
+
+```
+vue create todo
+```
+eğer aşağıdaki gibi bir hata olursa 
+
+```
+vue : File C:\Users\Samet\AppData\Roaming\npm\vue.ps1 cannot be loaded. The file C:\Users\Samet\AppData\Roaming\npm\vue
+.ps1 is not digitally signed. You cannot run this script on the current system. For more information about running scri
+pts and setting execution policy, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:1
++ vue --version
++ ~~~
+    + CategoryInfo          : SecurityError: (:) [], PSSecurityException
+    + FullyQualifiedErrorId : UnauthorizedAccess
+```
+powershell i administrator modunda açarak aşağıdaki satırı çalıştırarak sorunu aşabiliriz.
+
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+```
+
+
+
+
+Vue projesinde 3 tane klasör var.
+
+#### node_modules :
+tüm bağımlılıklar bu klasörde bulunur.
+
+#### public : 
+css ler, image lar bu klasörde bulunur. bu klasör içerisinde index.html de `<div app>` bulunur. bütün program bu dosyadan çalışır.
+#### src : 
+tüm kod dosyaları bu klasörde bulunur.
