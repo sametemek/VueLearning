@@ -7,30 +7,17 @@
       </div>
     </nav>
     <div class="container">
-      <div class="card" v-for="(item,index) in todos" :key="index">
-        <div class="card-body">
-          <div class="card-title">{{item.title}}</div>
-          <h6 class="card-subtitle text-danger" v-if="item.dueDate">
-            <span v-show="item.dueDate.getTime() < Date.now()">Overdue:</span>
-            {{item.dueDate}}
-          </h6>
-        </div>
-        <div class="todo-controls">
-          <button
-            class="btn btn-sm btn-outline-success"
-            @click.prevent="item.isCompleted=true"
-          >Complete</button>
-        </div>
-      </div>
+      <TodoList :todos="todos" />
     </div>
   </div>
 </template>
 
 <script>
+import TodoList from "./components/TodoList.vue";
 /* Komponent in davranışı, yani işlevleri burada bulunur. */
 export default {
   name: "App",
-  components: {},
+  components: { TodoList },
   data() {
     return {
       todos: [
@@ -52,17 +39,4 @@ export default {
 </script>
 
 <style>
-.card {
-  margin-top: 10px;
-}
-.card .todo-controls {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  padding: 5px;
-  visibility: hidden;
-}
-.card:hover .todo-controls {
-  visibility: visible;
-}
 </style>
