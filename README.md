@@ -4,23 +4,21 @@
 
 v-bind:value="index" or :index değeriyle o elementi bağlar. sadece göstermek için.
 
- ```javascript 
+```javascript
 <input type="text" id="title" v-bind:value="title">
- ```
+```
 
 v-model="index" ise hem veriyi bağlar, hem de değiştikçe verinin içini de değiştirir.
 
-```javascript 
+```javascript
 <input type="text" id="title" v-model="title">
- ```
+```
 
- v-model="" çift tırnak içerisine yazılanlar javascript kodudur.
-
+v-model="" çift tırnak içerisine yazılanlar javascript kodudur.
 
 ## Components
 
-### Component tanımı 
-
+### Component tanımı
 
 ```
     Vue.component('komponent adı',{
@@ -28,17 +26,19 @@ v-model="index" ise hem veriyi bağlar, hem de değiştikçe verinin içini de d
         template : `bir div bloğu içerisinde tasarım`
     });
 ```
-```javascript 
-    Vue.component('output-message',{
-        props : ['title','message'],
-        template : `<div>  
+
+```javascript
+Vue.component("output-message", {
+  props: ["title", "message"],
+  template: `<div>  
         <h1>{{ title }}</h1>
         <p>{{ message }}</p>
         </div> `
-    });
+});
 ```
 
 ### Component kullanımı
+
 ```
 <komponent-adı :prop1="prop1" :propN="propN"/>
 ```
@@ -62,12 +62,14 @@ Nodejs ile beraber npm de kurulmuş olacak. Npm yardımıyla VueCli kurulur.
 ```
 npm install -g @vue/cli
 ```
+
 VueCli kurulduktan sonra aşağıdaki komutla vue projesini oluşturuyoruz.
 
 ```
 vue create todo
 ```
-eğer aşağıdaki gibi bir hata olursa 
+
+eğer aşağıdaki gibi bir hata olursa
 
 ```
 vue : File C:\Users\Samet\AppData\Roaming\npm\vue.ps1 cannot be loaded. The file C:\Users\Samet\AppData\Roaming\npm\vue
@@ -79,48 +81,53 @@ At line:1 char:1
     + CategoryInfo          : SecurityError: (:) [], PSSecurityException
     + FullyQualifiedErrorId : UnauthorizedAccess
 ```
+
 powershell i administrator modunda açarak aşağıdaki satırı çalıştırarak sorunu aşabiliriz.
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
 
-
-
-
 Vue projesinde 3 tane klasör var.
 
 #### node_modules :
+
 tüm bağımlılıklar bu klasörde bulunur.
 
-#### public : 
-css ler, image lar bu klasörde bulunur. bu klasör içerisinde index.html de `<div app>` bulunur. bütün program bu dosyadan çalışır.
-#### src : 
-tüm kod dosyaları bu klasörde bulunur.
+#### public :
 
+css ler, image lar bu klasörde bulunur. bu klasör içerisinde index.html de `<div app>` bulunur. bütün program bu dosyadan çalışır.
+
+#### src :
+
+tüm kod dosyaları bu klasörde bulunur.
 
 ### Component in yapısı
 
 ```vue
 <template>
- <!-- Komponent in tasarımı burada bulunur. -->
-  <div id="app">
-  </div>
+  <!-- Komponent in tasarımı burada bulunur. -->
+  <div id="app"></div>
 </template>
 
 <script>
 /* Komponent in davranışı, yani işlevleri burada bulunur.  */
 
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {}
+};
 </script>
 
 <style>
-   /* Stiller burada bulunur.  */
+/* Stiller burada bulunur.  */
 </style>
 ```
 
 App.vue projenin temel komponentidir. Diğer bütün komponentler bu komponent içerisinde çağırılır. Layout da bu komponent içerisinde belirlenir.
+
+v-show="condition" : eğer içindeki doğruysa, yazıldığı tag i gösterir, yanlışsa gizler.
+v-if="condition" : eğer içindeki doğruysa, yazıldığı tag i gösterir, yanlışsa forma hiç çizmez.
+
+v-on:click : tıklanınca ne yapılacağını belirlemek için, kısayolu @click
+@click.prevent denirse, preventDefault özelliği aktif olur. Yani bu bir submit butonuysa, formu yollamaktan vazgeçer.
