@@ -9,7 +9,13 @@
     <div class="container">
       <div class="card" v-for="(item,index) in todos" :key="index" >
         <div class="card-body">
-            {{item.title}}
+            <div class="card-title">
+              {{item.title}}
+            </div>
+            <h6 class="card-subtitle text-danger" v-if="item.dueDate">
+              <span v-if="item.dueDate.getTime() < Date.now()">Overdue:</span>
+              {{item.dueDate}}
+            </h6>
         </div>
       </div>
     </div>
@@ -24,8 +30,8 @@ export default {
   data(){
     return {
         todos:[
-          {title:'Setup environment'},
-          {title:'Create main list component'},
+          {title:'Setup environment', dueDate : new Date(2020,2,22)},
+          {title:'Create main list component', dueDate : new Date(2020,4,22)},
           {title:'Display TODO items'}
           ]
       }
