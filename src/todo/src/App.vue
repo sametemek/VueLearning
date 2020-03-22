@@ -1,28 +1,24 @@
 <template>
+ <!-- Komponent in tasarımı burada bulunur. -->
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a href="" class="navbar-brand">TODO</a>
+      </div>
+    </nav>
+    <div class="container">
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+/* Komponent in davranışı, yani işlevleri burada bulunur. */
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components: {}
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+   /* Stiller burada bulunur.  */
 </style>

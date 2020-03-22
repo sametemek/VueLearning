@@ -97,3 +97,30 @@ tüm bağımlılıklar bu klasörde bulunur.
 css ler, image lar bu klasörde bulunur. bu klasör içerisinde index.html de `<div app>` bulunur. bütün program bu dosyadan çalışır.
 #### src : 
 tüm kod dosyaları bu klasörde bulunur.
+
+
+### Component in yapısı
+
+```vue
+<template>
+ <!-- Komponent in tasarımı burada bulunur. -->
+  <div id="app">
+  </div>
+</template>
+
+<script>
+/* Komponent in davranışı, yani işlevleri burada bulunur.  */
+
+export default {
+  name: 'App',
+  components: {
+  }
+}
+</script>
+
+<style>
+   /* Stiller burada bulunur.  */
+</style>
+```
+
+App.vue projenin temel komponentidir. Diğer bütün komponentler bu komponent içerisinde çağırılır. Layout da bu komponent içerisinde belirlenir.
