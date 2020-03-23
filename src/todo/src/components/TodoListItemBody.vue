@@ -1,7 +1,7 @@
 <template>
   <div class="card-body">
     <div class="card-title">{{item.title}}</div>
-    <h6 class="card-subtitle text-danger" v-if="item.dueDate">
+    <h6 class="card-subtitle" :class="overDueCss" v-if="item.dueDate">
       <span>{{dueDateLabel}}</span>
       {{ formattedDate }}
     </h6>
@@ -16,8 +16,17 @@ export default {
       return dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
     },
     dueDateLabel() {
-      let isOverDue = this.item.dueDate.getTime() > Date.now();
-      return isOverDue ? "Overdue" : "Due";
+      return this.isOverDue ? "Overdue" : "Due";
+    },
+    isOverDue() {
+      return this.item.dueDate.getTime() > Date.now();
+    },
+    overDueCss() {
+      return {
+        "text-danger": this.isOverDue,
+        bold: true,
+        "text-uppercase": this.isOverDue
+      };
     }
   }
 };
