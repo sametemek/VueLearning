@@ -4,16 +4,26 @@
       <li class="nav-item">
         <a
           href="#"
-          class="nav-link active"
-          data-toggle="tab"
-          @click.prevent="filter(false)"
+          class="nav-link"
+          :class="{'active':filterType === false}"
+          @click.prevent="filterType=false"
         >Incomplete</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link" data-toggle="tab" @click.prevent="filter(true)">Complete</a>
+        <a
+          href="#"
+          class="nav-link"
+          :class="{'active':filterType === true}"
+          @click.prevent="filterType=true"
+        >Complete</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link" data-toggle="tab" @click.prevent="filter()">All</a>
+        <a
+          href="#"
+          class="nav-link"
+          :class="{'active':filterType === undefined}"
+          @click.prevent="filterType=undefined"
+        >All</a>
       </li>
     </ul>
     <TodoListItem v-for="(item,index) in filteredItems" :key="index" :item="item" />
@@ -27,14 +37,20 @@ export default {
   components: { TodoListItem },
   data() {
     return {
-      filteredItems: this.todos.filter(item => !item.isCompleted)
+      filteredItems: this.todos.filter(item => !item.isCompleted),
+      filterType: false
     };
   },
+  watch: {
+    filterType() {
+      this.filter();
+    }
+  },
   methods: {
-    filter(completed) {
-      if (completed === true) {
+    filter() {
+      if (this.filterType === true) {
         this.filteredItems = this.todos.filter(item => item.isCompleted);
-      } else if (completed === false) {
+      } else if (this.filterType === false) {
         this.filteredItems = this.todos.filter(item => !item.isCompleted);
       } else {
         this.filteredItems = this.todos;

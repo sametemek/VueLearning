@@ -24,14 +24,14 @@ export default {
         {
           title: "Setup environment",
           dueDate: new Date(2020, 2, 22),
-          isCompleted: false
+          isCompleted: true
         },
         {
           title: "Create main list component",
           dueDate: new Date(2020, 4, 22),
           isCompleted: false
         },
-        { title: "Display TODO items", isCompleted: false }
+        { title: "Display TODO items", isCompleted: undefined }
       ]
     };
   }
