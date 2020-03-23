@@ -142,3 +142,21 @@ data() { return { filteredItems: this.todos.filter(item => !item.isCompleted) };
 ```
 
 filteredItems sadece içeride kullanılan bir değişken.
+
+## methods
+
+komponent içerisinde internal çalışacak metodlar burada tanımlanır.
+
+```javascript
+methods: {
+    filter(completed) {
+        if (completed === true) {
+            this.filteredItems = this.todos.filter(item => item.isCompleted);
+        } else if (completed === false) {
+            this.filteredItems = this.todos.filter(item => !item.isCompleted);
+        } else {
+            this.filteredItems = this.todos;
+        }
+    }
+}
+```
