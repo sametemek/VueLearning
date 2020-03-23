@@ -131,3 +131,5 @@ v-if="condition" : eğer içindeki doğruysa, yazıldığı tag i gösterir, yan
 
 v-on:click : tıklanınca ne yapılacağını belirlemek için, kısayolu @click
 @click.prevent denirse, preventDefault özelliği aktif olur. Yani bu bir submit butonuysa, formu yollamaktan vazgeçer.
+
+computed properties : componente gelen veriler içerisinde (props) bir işleme tabi tutarak kullanacağımız verileri buralarda işleriz. metod gibi yazılır property gibi kullanılır.
