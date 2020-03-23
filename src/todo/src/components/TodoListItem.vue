@@ -1,21 +1,55 @@
 <template>
-  <div class="card" v-show="!item.isCompleted">
-    <TodoListItemBody :item="item" />
-    <TodoListItemControls :item="item" />
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title">{{item.title}}</div>
+      <h6 class="card-subtitle" :class="overDueCss" v-if="item.dueDate && !item.isCompleted">
+        <span>{{dueDateLabel}}</span>
+        {{ formattedDate }}
+      </h6>
+    </div>
+    <div class="todo-controls" v-if="!item.isCompleted">
+      <button class="btn btn-sm btn-outline-success" @click.prevent="item.isCompleted=true">Complete</button>
+    </div>
   </div>
 </template>
 
 <script>
-import TodoListItemControls from "./TodoListItemControls";
-import TodoListItemBody from "./TodoListItemBody";
 export default {
   props: ["item"],
-  components: { TodoListItemControls, TodoListItemBody }
+  computed: {
+    formattedDate() {
+      let dt = this.item.dueDate;
+      return dt.getFullYear() + "-" + (dt.getMonth() + 1) + "-" + dt.getDate();
+    },
+    dueDateLabel() {
+      return this.isOverDue ? "Overdue" : "Due";
+    },
+    isOverDue() {
+      return this.item.dueDate.getTime() > Date.now();
+    },
+    overDueCss() {
+      return {
+        "text-danger": this.isOverDue,
+        bold: true,
+        "text-uppercase": this.isOverDue
+      };
+    }
+  }
 };
 </script>
 
 <style scoped>
 .card {
   margin-top: 10px;
+}
+.card .todo-controls {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 5px;
+  visibility: hidden;
+}
+.card:hover .todo-controls {
+  visibility: visible;
 }
 </style>

@@ -133,3 +133,12 @@ v-on:click : tıklanınca ne yapılacağını belirlemek için, kısayolu @click
 @click.prevent denirse, preventDefault özelliği aktif olur. Yani bu bir submit butonuysa, formu yollamaktan vazgeçer.
 
 computed properties : componente gelen veriler içerisinde (props) bir işleme tabi tutarak kullanacağımız verileri buralarda işleriz. metod gibi yazılır property gibi kullanılır.
+
+sadece içeride kullanacağımız bir değişkense, export default un içerisinde data() nın içerisinde return() metodunun içerisinde dönüyoruz.
+
+```vue
+data() { return { filteredItems: this.todos.filter(item => !item.isCompleted) };
+}
+```
+
+filteredItems sadece içeride kullanılan bir değişken.
