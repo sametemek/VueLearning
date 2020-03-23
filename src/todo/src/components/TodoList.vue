@@ -26,7 +26,12 @@
         >All</a>
       </li>
     </ul>
-    <TodoListItem v-for="(item,index) in filteredItems" :key="index" :item="item" />
+    <TodoListItem
+      v-for="(item,index) in filteredItems"
+      :key="index"
+      :item="item"
+      @item-completed="filter()"
+    />
   </div>
 </template>
 

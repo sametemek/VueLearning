@@ -7,8 +7,17 @@
         {{ formattedDate }}
       </h6>
     </div>
-    <div class="todo-controls" v-if="!item.isCompleted">
-      <button class="btn btn-sm btn-outline-success" @click.prevent="item.isCompleted=true">Complete</button>
+    <div class="todo-controls">
+      <button
+        v-if="!item.isCompleted"
+        class="btn btn-sm btn-outline-success"
+        @click.prevent="changeStatus(true)"
+      >Complete</button>
+      <button
+        v-if="item.isCompleted"
+        class="btn btn-sm btn-outline-danger"
+        @click.prevent="changeStatus(false)"
+      >Undo</button>
     </div>
   </div>
 </template>
@@ -33,6 +42,12 @@ export default {
         bold: true,
         "text-uppercase": this.isOverDue
       };
+    }
+  },
+  methods: {
+    changeStatus(isCompleted) {
+      this.item.isCompleted = isCompleted;
+      this.$emit("item-completed");
     }
   }
 };
