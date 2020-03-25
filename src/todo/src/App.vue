@@ -1,13 +1,25 @@
 <template>
   <!-- Komponent in tasarımı burada bulunur. -->
   <div id="app">
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
       <div class="container">
         <a href class="navbar-brand">TODO</a>
+        <div class="navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <router-link class="nav-link" to="/">Home</router-link> |  
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/about">About</router-link>
+            </li>
+          </ul>
+        </div>
+              
+      
       </div>
     </nav>
     <div class="container">
-      <TodoList :todos="todos" />
+          <router-view/>
     </div>
   </div>
 </template> 
@@ -16,27 +28,10 @@
 import TodoList from "./components/TodoList.vue";
 /* Komponent in davranışı, yani işlevleri burada bulunur. */
 export default {
-  name: "App",
-  components: { TodoList },
-  data() {
-    return {
-      todos: [
-        {
-          title: "Setup environment",
-          dueDate: new Date(2020, 2, 22),
-          isCompleted: true
-        },
-        {
-          title: "Create main list component",
-          dueDate: new Date(2020, 4, 22),
-          isCompleted: false
-        },
-        { title: "Display TODO items", isCompleted: undefined }
-      ]
-    };
-  }
+  name: "App"
 };
 </script>
 
 <style>
 </style>
+
