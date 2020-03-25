@@ -24,7 +24,9 @@ export default {
   },
   methods: {
     addTodoItem(){
+        this.$todos.addItem(this.title,this.dueDate);
         this.$router.push('/');
+
     }
   }
 }

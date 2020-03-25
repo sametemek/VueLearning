@@ -160,3 +160,5 @@ methods: {
     }
 }
 ```
+
+Vuex: State management ı için kullanılan kütüphane.
