@@ -1,5 +1,7 @@
 <template>
-  <div class="card">
+  <div class="card"
+  :class="{'alert-success': item.isCompleted}"
+  >
     <div class="card-body">
       <div class="card-title">{{item.title}}</div>
       <h6 class="card-subtitle" :class="overDueCss" v-if="item.dueDate && !item.isCompleted">
@@ -47,6 +49,7 @@ export default {
   methods: {
     changeStatus(isCompleted) {
       this.item.isCompleted = isCompleted;
+      this.$todos.changeStatus(this.item.id, isCompleted)
       this.$emit("item-completed");
     }
   }

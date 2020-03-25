@@ -13,7 +13,7 @@ function getItems(){
     return JSON.parse(items);
 }
 
-function saveItem(items){
+function saveItems(items){
     localStorage.setItem(TODO_KEY,JSON.stringify(items));
 }
 export default {
@@ -45,7 +45,15 @@ export default {
 
         items.push(todo);
 
-        saveItem(items);
+        saveItemss(items);
+    },
+    changeStatus(id,status){
+        let items = getItems();
+        let item = items.find(x=> x.id === id);
+        item.isCompleted = status;
+
+        saveItems(items);
+
     }
 
 }
