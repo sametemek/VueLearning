@@ -34,7 +34,7 @@ export default {
       return this.isOverDue ? "Overdue" : "Due";
     },
     isOverDue() {
-      return this.item.dueDate.getTime() > Date.now();
+      return this.item.dueDate.getTime() < Date.now();
     },
     overDueCss() {
       return {

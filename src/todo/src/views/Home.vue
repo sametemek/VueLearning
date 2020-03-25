@@ -11,21 +11,16 @@ import TodoList from './../components/TodoList.vue'
 export default {
   name: 'Home',
   components: { TodoList },
+  created() //data yerine burada atama yapıyoruz.
+  {
+  this.todos = this.$todos.getItems();
+  },
+  mounted(){
+    
+  },
   data() {
     return {
-      todos: [
-        {
-          title: "Setup environment",
-          dueDate: new Date(2020, 2, 22),
-          isCompleted: true
-        },
-        {
-          title: "Create main list component",
-          dueDate: new Date(2020, 4, 22),
-          isCompleted: false
-        },
-        { title: "Display TODO items", isCompleted: undefined }
-      ]
+      todos: [] // burada direk atama yapmıyoruz. 
     };
   }
 }

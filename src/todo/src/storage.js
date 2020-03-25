@@ -17,6 +17,18 @@ function saveItem(items){
     localStorage.setItem(TODO_KEY,JSON.stringify(items));
 }
 export default {
+    getItems(){
+        let items = getItems();
+
+        items.forEach(item => {
+            if(item.dueDate){
+                item.dueDate = new Date(item.dueDate);
+            }
+        });
+
+        return items;
+    },
+
     addItem(title,dueDate){
         let todo = {
             id : generateId(),
