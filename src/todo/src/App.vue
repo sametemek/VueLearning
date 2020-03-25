@@ -10,7 +10,7 @@
       <TodoList :todos="todos" />
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import TodoList from "./components/TodoList.vue";
